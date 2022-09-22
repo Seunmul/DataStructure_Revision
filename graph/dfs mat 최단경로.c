@@ -76,7 +76,7 @@ int dfs_stack(GraphType *g, int u)
             }
             else 
             {
-                printf("돌아가야합니다. 최단경로가 아닙니다.");
+                printf("연결할 수 있는 vertex가 없습니다.돌아가야합니다. 최단경로가 아닙니다.");
                 break;
             }
             pushCnt=0;
