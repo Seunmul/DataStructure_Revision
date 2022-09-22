@@ -25,13 +25,10 @@ void dfs_mat(GraphType *g, int v)
     return;
 }
 
-//dfs
+// dfs
 void dfs_stack(GraphType *g, int u)
 {
     Stack *pStack = CreateStack(STACK_SIZE);
-
-    int minVertexWeight = 0;
-    int tempVertexWeight = 0;
     int count = 0;
     int visited[STACK_SIZE] = {
         FALSE,
@@ -42,7 +39,6 @@ void dfs_stack(GraphType *g, int u)
 
     while (!IsEmptyStack(pStack))
     {
-        tempVertexWeight = 10;
         //당도한 vertex Pop해서 위치에 도달
         u = Pop(pStack);
         //방문하지 않은 vertex라면 코드 진행
@@ -54,25 +50,19 @@ void dfs_stack(GraphType *g, int u)
             if (++count == g->vertex_cnt)
                 break;
             //스택에 넣고 진행.
-            for (int v = g->vertex_cnt - 1; v >= 0; v--)
+            for (int v = 0; v < g->vertex_cnt; v++)
             {
                 if (!visited[v] && g->adj_mat[u][v] > 0)
                 {
                     printf(" %d (%d)", v, g->adj_mat[u][v]);
-                    if (tempVertexWeight > g->adj_mat[u][v])
-                    {
-                        minVertexWeight = g->adj_mat[u][v];
-                        Push(pStack, v);
-                        tempVertexWeight = minVertexWeight;
-                    }
+                    Push(pStack, v);
                 }
             }
-
         }
     }
     DestroyStack(pStack);
     printf("\n");
-    return ;
+    return;
 }
 
 int main(void)
