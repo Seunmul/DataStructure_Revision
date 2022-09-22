@@ -17,13 +17,16 @@ int main()
     //0번과 2번 vertex사이 무방향 연결
     insert_edge(g,0,2);
     insert_edge(g,2,0);
-    //비슷하게
+    //비슷하게 무방향 연결
     insert_edge(g,0,3);
     insert_edge(g,3,0);
     insert_edge(g,1,2);
     insert_edge(g,2,1);
     insert_edge(g,2,3);
     insert_edge(g,3,2);
+
+    //indegree,outdegree,weights,연결
+    insert_edge_weights(g,1,3,5);
     print_adj_list(g);
 
     free(g);

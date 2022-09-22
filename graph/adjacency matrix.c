@@ -15,6 +15,10 @@ int main(){
         insert_vertex(g,i);
     }
     insert_edge(g,0,1);
+    insert_edge_weights(g,0,2,9);
+    insert_edge_weights(g,1,2,5);
+    insert_edge_weights(g,2,1,3);
+    insert_indegree_edge_weights(g,1,2,7);
     print_adj_mat(g);
      
     free(g);

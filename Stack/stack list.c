@@ -3,16 +3,6 @@
 #include "stack list.h"
 #define STACK_SIZE 30
 
-bool IsFullStack(Stack *pStack);
-bool IsEmptyStack(Stack *pStack);
-Stack *CreateStack(int size);
-void DestroyStack(Stack *pStack);
-void Push(Stack *pStack, Element item);
-int Pop(Stack *pStack);
-int Top(Stack *pStack);
-int CountStackItem(Stack *pStack);
-void ClearStack(Stack *pStack);
-
 int main()
 {
     Stack *pStack = CreateStack(STACK_SIZE);

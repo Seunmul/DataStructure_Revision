@@ -3,11 +3,16 @@
 #ifndef Stack_List_H
 #define Stack_List_H
 
+#define TRUE 1
+#define FALSE 0
+
 #include <stdlib.h>
 #include <stdio.h>
-#include <stdbool.h>
+
+
 
 // header
+typedef int Bool;
 typedef int Element;
 
 typedef struct tStackNode
@@ -22,8 +27,8 @@ typedef struct
     StackNode *top;
 } Stack;
 
-bool IsFullStack(Stack *pStack);
-bool IsEmptyStack(Stack *pStack);
+Bool IsFullStack(Stack *pStack);
+Bool IsEmptyStack(Stack *pStack);
 Stack *CreateStack(int size);
 void DestroyStack(Stack *pStack);
 void Push(Stack *pStack, Element item);
@@ -34,18 +39,18 @@ void ClearStack(Stack *pStack);
 
 //.Stack_List.c
 // size is not used in linked list implementation
-bool IsFullStack(Stack *pStack)
+Bool IsFullStack(Stack *pStack)
 {
-    return false;
+    return FALSE;
 }
 
 //���� ������ count�� �����ؼ�, 0�̸��ϰ�� true��ȯ.
-bool IsEmptyStack(Stack *pStack)
+Bool IsEmptyStack(Stack *pStack)
 {
     if (pStack->count <= 0)
-        return true;
+        return TRUE;
     else
-        return false;
+        return FALSE;
 }
 
 // list�� stack ����, ��ȯ��: Stack* //size is not used in linked list implementation

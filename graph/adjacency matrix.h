@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #define MAX_VERTICES 50
+
 typedef struct GraphType
 {
     int vertex_cnt;
@@ -39,6 +40,51 @@ void insert_edge(GraphType *g, int start, int end)
     }
     g->adj_mat[start][end] = 1;
     g->adj_mat[end][start] = 1;
+}
+
+//간선 삽입 + weight
+void insert_edge_weights(GraphType *g, int start, int end, int weight)
+{
+    if (start >= g->vertex_cnt || end >= g->vertex_cnt)
+    {
+        fprintf(stderr, "vertex key error");
+        return;
+    }
+    g->adj_mat[start][end] = weight;
+    g->adj_mat[end][start] = weight;
+}
+
+// indegree edge + weight
+void insert_indegree_edge_weights(GraphType *g, int start, int end, int weight)
+{
+    if (start >= g->vertex_cnt || end >= g->vertex_cnt)
+    {
+        fprintf(stderr, "vertex key error");
+        return;
+    }
+    g->adj_mat[start][end] = weight;
+}
+// outdegree edge + weights
+void insert_outdegree_edge_weights(GraphType *g, int start, int end, int weight)
+{
+    if (start >= g->vertex_cnt || end >= g->vertex_cnt)
+    {
+        fprintf(stderr, "vertex key error");
+        return;
+    }
+    g->adj_mat[end][start] = weight;
+}
+
+// inoutdegree edge + weights
+void insert_inoutdegree_edge_weights(GraphType *g, int start, int end, int in_weight, int out_weight)
+{
+    if (start >= g->vertex_cnt || end >= g->vertex_cnt)
+    {
+        fprintf(stderr, "vertex key error");
+        return;
+    }
+    g->adj_mat[start][end] = in_weight;
+    g->adj_mat[end][start] = out_weight;
 }
 
 // 인접 행렬 출력 함수
