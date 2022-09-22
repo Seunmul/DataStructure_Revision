@@ -25,14 +25,15 @@ void dfs_mat(GraphType *g, int v)
     return;
 }
 
-//dfs
-void dfs_stack(GraphType *g, int u)
+//최단거리 찾기 dfs
+int dfs_stack(GraphType *g, int u)
 {
     Stack *pStack = CreateStack(STACK_SIZE);
-
+    int totalWeight = 0;
     int minVertexWeight = 0;
     int tempVertexWeight = 0;
     int count = 0;
+    int pushCnt = 0;
     int visited[STACK_SIZE] = {
         FALSE,
     };
@@ -63,16 +64,27 @@ void dfs_stack(GraphType *g, int u)
                     {
                         minVertexWeight = g->adj_mat[u][v];
                         Push(pStack, v);
+                        pushCnt++;
                         tempVertexWeight = minVertexWeight;
                     }
                 }
             }
-
+            if (pushCnt > 0)
+            {
+                printf(" |선택 : %d(%d)", Top(pStack), minVertexWeight);
+                totalWeight += minVertexWeight;
+            }
+            else 
+            {
+                printf("돌아가야합니다. 최단경로가 아닙니다.");
+                break;
+            }
+            pushCnt=0;
         }
     }
     DestroyStack(pStack);
     printf("\n");
-    return ;
+    return totalWeight;
 }
 
 int main(void)
@@ -109,7 +121,8 @@ int main(void)
     for (int temp, i = 0; i < g->vertex_cnt; i++)
     {
         printf("\n>> %d >> Stack DFS : ", i);
-        dfs_stack(g, i);
+        temp = dfs_stack(g, i);
+        printf("total weight : %d\n", temp);
     }
 
     free(g);
